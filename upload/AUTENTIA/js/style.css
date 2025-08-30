@@ -1,0 +1,94 @@
+/* Estilo para centrar todo */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f7fa; /* Fondo claro */
+}
+
+.form-container {
+    width: 100%;
+    max-width: 600px;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f7fa; /* Fondo claro */
+    color: #333;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #0056b3; /* Azul para el encabezado */
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+/* Estilos del formulario */
+label {
+    display: block;
+    margin: 20px 0 10px;
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+select {
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Estilos del botón */
+button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #0056b3; /* Botón azul */
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #003d8f; /* Oscurece el botón al hacer hover */
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8_spanish_ci" />
+    <TITLE>WebServer Multibrowser (Verifica)</TITLE>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="jqueryui.com/jquery-wp-content/themes/jqueryui.com/style.css">
+	<script language="JavaScript" src="code.jquery.com/jquery-1.12.4.js"></script>
+	<script language="JavaScript" src="code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <!--script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script-->
+    <script language="JavaScript" type="text/javascript" src="./js/jquery.blockUI.js"></script>
+	
+    <script language="JavaScript" type="text/javascript" src="./js/json2.js"></script>		
+	<script language="JavaScript" type="text/javascript" src="./js/jsrasign/ext/jsbn.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/jsrasign/ext/jsbn2.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/jsrasign/ext/rsa.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/jsrasign/ext/rsa2.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/jsrasign/ext/base64.js"></script>
+
+	<!-- for crypto.js -->
+	<script src="./js/yahoo/yahoo-min.js"></script>
+	<script src="./js/cryptojs/components/core.js"></script>
+	<script src="./js/cryptojs/components/md5.js"></script>
+	<script src="./js/cryptojs/components/sha1.js"></script>
+	<script src="./js/cryptojs/components/sha256.js"></script>
+	<script src="./js/cryptojs/components/ripemd160.js"></script>
+	<script src="./js/cryptojs/components/x64-core.js"></script>
+	<script src="./js/cryptojs/components/sha512.js"></script>
+
+	<script language="JavaScript" type="text/javascript" src="./js/jsrasign/rsapem-1.1.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/jsrasign/rsasign-1.2.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/jsrasign/asn1hex-1.1.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/jsrasign/x509-1.1.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="./js/jsrasign/crypto-1.1.min.js"></script>
+    <!--script type="text/javascript" src="cryptojs/sha1.js"></script-->
+	<script src="./js/plugin.autentia_v3.js"></script>
+	<script>
+		function testAutentia()
+		{
+			var objJS = new plgAutentiaJS();
+			var entrada = {
+				Rut:$("#rut").val()
+			};
+			var token = Math.random();
+			var salida = ['Erc', 'ErcDesc', 'NroAudit'];
+			objJS.Transaccion2('../SANTANDER/verifica', entrada, salida, true, token, function(response) {
+					alert('ErcDesc: ' + response.ParamsGet.ErcDesc +
+					'\nErc : ' + response.ParamsGet.Erc + 
+					'\nNroAudit : ' + response.ParamsGet.NroAudit);
+			});
+		}		
+	</script>
+  </HEAD>
+  <BODY>
+    <H2><CENTER>WebServer Multibrowser Testing (Verifica)</CENTER></H2>
+    <!--form method="post" action='./firma'-->
+		<label for='rut'>Ingrese rut a validar : </label>
+		<input type = 'text' id='rut'>
+
+		<button type = 'submit' onclick="testAutentia()">Ejecutar transaccion</button>
+  	<!--/form-->
+  </BODY>
+</HTML>

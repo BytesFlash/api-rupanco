@@ -1,0 +1,35 @@
+namespace: manager
+appname: jobBaseName
+port: 80
+
+deploy:
+  enabled: true
+  replicas: 1
+  build: numberBuildJob
+  containerPort: 5000
+
+image:
+  repository: imageRegistry/appVersion
+  
+ingress:
+  enabled: true
+  type: external
+  host: manager-api-qa.i-med.cl
+  annotations:
+    alb.ingress.kubernetes.io/group.name: cl-aut-qa-external-lb
+    alb.ingress.kubernetes.io/load-balancer-name: "cl-aut-qa-external-lb"
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:120144148414:certificate/598ba41e-3180-40fa-b4ba-b7cb8d1dd86f
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
+
+service:
+  enabled: true
+  port: 80
+  targetPort: 5000
+
+hostAliases:
+  - hostnames:
+    - "qa.autentia.cl"
+    ip: "172.16.18.12"
